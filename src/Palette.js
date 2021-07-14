@@ -11,8 +11,8 @@ class Palette extends Component {
          }
     }
   render () {
-    return (
 
+    return (
       <div className="Palette">
           {/* Navbar goes here */}
           <div className="Palette-colors">

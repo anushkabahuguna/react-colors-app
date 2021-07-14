@@ -6,7 +6,7 @@ class ColorBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      copied: false,
+      copied: false
     };
     this.changeCopyState = this.changeCopyState.bind(this);
   }
@@ -23,7 +23,7 @@ class ColorBox extends Component {
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
         <div className="ColorBox" style={{ background }}>
-            {/* here we are taking separtae div because if we incrrease size of colorbox then
+            {/* here we are taking separate div because if we incrrease size of colorbox then
             size of buttons and texts on it will also increase */}
           <div style={{ background }} className={`copy-overlay ${copied?`show`:``}`} />
           <div className={`copy-msg ${copied?`show`:``}`}>

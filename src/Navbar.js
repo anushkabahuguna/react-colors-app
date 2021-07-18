@@ -6,6 +6,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import { Link } from "react-router-dom";
 // import after rc-slider
 import "./Navbar.css";
 
@@ -20,7 +21,7 @@ class Navbar extends Component {
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
   handleFormatChange(evt) {
-    this.setState({ format: evt.target.value ,open:true}, () => {
+    this.setState({ format: evt.target.value, open: true }, () => {
       this.props.handleChange(this.state.format);
     });
   }
@@ -33,7 +34,7 @@ class Navbar extends Component {
     return (
       <nav className="Navbar">
         <div className="logo">
-          <a href="#">react color picker</a>
+          <Link to="/">react color picker</Link>
         </div>
         <div className="slider-container">
           <span className="slider-text">Level: {colorValue}</span>

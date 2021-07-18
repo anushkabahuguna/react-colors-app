@@ -8,29 +8,34 @@ class Palette extends Component {
     super(props);
     this.state = {
       colorValue: 500,
+      format:'hex'
     };
     this.changeColors = this.changeColors.bind(this);
+    this.changeFormat = this.changeFormat.bind(this);
   }
   changeColors(value) {
     this.setState({ colorValue: value });
   }
-
+  changeFormat(val) {
+   this.setState({format:val});
+  }
   render() {
     const { colors } = this.props.palette;
-    const { colorValue } = this.state;
+    const { colorValue,format } = this.state;
     return (
       <div className="Palette">
         {/* Navbar goes here */}
-        <Navbar colorValue={colorValue} changeColors={this.changeColors} />
+        <Navbar colorValue={colorValue} changeColors={this.changeColors} handleChange={this.changeFormat}/>
         <div className="Palette-colors">
           {colors[colorValue].map((colorObj, index) => (
             <ColorBox
               key={index}
-              background={colorObj.hex}
+              background={colorObj[format]}
               name={colorObj.name}
             />
           ))}
         </div>
+        
         {/* here comes the footer */}
       </div>
     );

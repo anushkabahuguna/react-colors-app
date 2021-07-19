@@ -20,7 +20,7 @@ class Palette extends Component {
     this.setState({ format: val });
   }
   render() {
-    const { colors, paletteName, emoji } = this.props.palette;
+    const { colors, paletteName, emoji, id } = this.props.palette;
     const { colorValue, format } = this.state;
     return (
       <div className="Palette">
@@ -35,6 +35,7 @@ class Palette extends Component {
               key={colorObj.id}
               background={colorObj[format]}
               name={colorObj.name}
+              moreUrl={`/palette/${id}/${colorObj.id}`}
             />
           ))}
         </div>

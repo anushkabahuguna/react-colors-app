@@ -38,7 +38,7 @@ class Palette extends Component {
               background={colorObj[format]}
               name={colorObj.name}
               moreUrl={`/palette/${id}/${colorObj.id}`}
-              showLink={true}
+              showingFullPalette={true}
             />
           ))}
         </div>

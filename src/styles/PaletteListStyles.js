@@ -18,6 +18,14 @@ export default {
     width: "100%",
     justifyContent: "space-between",
     color: "white",
+    alignItems: "center",
+    "& a": {
+      color: "white",
+      textDecoration: "none",
+    },
+    "& a:hover": {
+      textDecoration: "underline",
+    },
   },
   palettes: {
     boxSizing: "border-box",

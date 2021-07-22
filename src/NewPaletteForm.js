@@ -12,8 +12,9 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import DraggableColorBox from "./DraggableColorBox";
+import DraggableColorList from "./DraggableColorList";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import arrayMove from "array-move";
 
 const drawerWidth = 400;
 
@@ -89,6 +90,7 @@ class NewPaletteForm extends Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.savePalette = this.savePalette.bind(this);
+    this.removeColor = this.removeColor.bind(this);
   }
   componentDidMount() {
     //custom rules for validation
@@ -144,6 +146,11 @@ class NewPaletteForm extends Component {
       colors: this.state.colors.filter((color) => color.name !== name),
     });
   }
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colors }) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
+  };
   render() {
     const { classes } = this.props;
     const { open, currentColor, colors, newColorName } = this.state;
@@ -248,15 +255,12 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-
-          {colors.map((c) => (
-            <DraggableColorBox
-              color={c.color}
-              name={c.name}
-              key={c.name}
-              handleClick={() => this.removeColor(c.name)}
-            />
-          ))}
+          <DraggableColorList
+            axis="xy"
+            colors={colors}
+            removeColor={this.removeColor}
+            onSortEnd={this.onSortEnd}
+          />
         </main>
       </div>
     );

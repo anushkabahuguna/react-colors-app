@@ -15,22 +15,36 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      palettes: seedColors,
+    };
+    this.savePalette = this.savePalette.bind(this);
+    this.findPalette = this.findPalette.bind(this);
   }
   findPalette(id) {
-    return seedColors.find((palette) => palette.id === id);
+    return this.state.palettes.find((palette) => palette.id === id);
+  }
+  savePalette(newPalette) {
+    this.setState({ palettes: [...this.state.palettes, newPalette] });
   }
   render() {
+    const { palettes } = this.state;
     return (
       <div className="App">
         <Switch>
           {/* this route should come on top as we have one more route which mathces this */}
-          <Route exact path="/palette/new" render={() => <NewPaletteForm />} />
+          <Route
+            exact
+            path="/palette/new"
+            render={(routeProps) => (
+              <NewPaletteForm savePalette={this.savePalette} {...routeProps} />
+            )}
+          />
           <Route
             exact
             path="/"
             render={(routeProps) => (
-              <PaletteList palettes={seedColors} {...routeProps} />
+              <PaletteList palettes={palettes} {...routeProps} />
             )}
           />
           <Route

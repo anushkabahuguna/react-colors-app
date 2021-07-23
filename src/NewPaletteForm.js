@@ -82,7 +82,7 @@ class NewPaletteForm extends Component {
     };
     this.addNewColor = this.addNewColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.savePalette = this.savePalette.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.removeColor = this.removeColor.bind(this);
     this.clearColors = this.clearColors.bind(this);
     this.addRandomColor = this.addRandomColor.bind(this);
@@ -102,13 +102,11 @@ class NewPaletteForm extends Component {
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  savePalette(newName) {
+  handleSubmit(newPalette) {
     //id is palette name with spaces replaced ny hyphen
-    const newPalette = {
-      paletteName: newName,
-      colors: this.state.colors,
-      id: newName.toLowerCase().replace(/ /g, "-"),
-    };
+    newPalette.colors = this.state.colors;
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-");
+
     this.props.savePalette(newPalette);
     this.props.history.push("/");
   }
@@ -141,7 +139,7 @@ class NewPaletteForm extends Component {
           open={open}
           classes={classes}
           palettes={palettes}
-          savePalette={this.savePalette}
+          handleSubmit={this.handleSubmit}
           handleDrawerOpen={this.handleDrawerOpen}
         />
         <Drawer

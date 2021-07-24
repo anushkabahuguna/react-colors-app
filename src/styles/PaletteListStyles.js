@@ -1,12 +1,20 @@
 import sizes from "./sizes";
-
+import background from "./bg.svg";
 export default {
   root: {
-    backgroundColor: "blue",
+    /* background by SVGBackgrounds.com*/
+    backgroundColor: "#ffc6d7",
+    backgroundImage: `url(${background})`,
+    backgroundAttachment: "fixed",
+    backgroundSize: "cover",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
+    overflow: "scroll",
+  },
+  heading: {
+    fontSize: "1.6rem",
   },
   container: {
     width: "50%",
@@ -24,11 +32,12 @@ export default {
   nav: {
     display: "flex",
     width: "100%",
+
     justifyContent: "space-between",
-    color: "white",
+    color: "black",
     alignItems: "center",
     "& a": {
-      color: "white",
+      color: "black",
       textDecoration: "none",
     },
     "& a:hover": {
@@ -46,7 +55,7 @@ export default {
     },
     [sizes.down("xs")]: {
       gridTemplateColumns: "repeat(1,100%)",
-      gridGap: "1rem",
+      gridGap: "1.4rem",
     },
   },
 };

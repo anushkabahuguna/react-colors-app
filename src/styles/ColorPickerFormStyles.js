@@ -1,3 +1,5 @@
+import chroma from "chroma-js";
+
 const styles = {
   root: {
     width: "100%",

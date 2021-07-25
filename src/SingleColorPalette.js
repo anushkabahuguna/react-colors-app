@@ -2,17 +2,24 @@ import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
-import { Link } from "react-router-dom";
+import { Navigation, Route, Screen, Link, glide } from "react-tiger-transition";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles/PaletteStyles";
+import { withRouter } from "react-router";
 
 class SingleColorPalette extends Component {
   constructor(props) {
     super(props);
+    const { generatePalette, findPalette } = this.props;
+    this.palette = generatePalette(
+      findPalette(this.props.match.params.paletteId)
+    );
     this._shades = this.gatherShades(
-      this.props.palette,
+      this.palette,
       this.props.match.params.colorId
     );
+    this.goBackUrl = `/palette/${this.props.match.params.paletteId}`;
+
     this.state = { format: "hex" };
     this.changeFormat = this.changeFormat.bind(this);
   }
@@ -33,8 +40,7 @@ class SingleColorPalette extends Component {
   render() {
     const { format } = this.state;
     const { classes } = this.props;
-    const { paletteId } = this.props.match.params;
-    const { paletteName, emoji } = this.props.palette;
+    const { paletteName, emoji } = this.palette;
     const colorBoxes = this._shades.map((color) => (
       <ColorBox
         key={color.name}
@@ -49,7 +55,9 @@ class SingleColorPalette extends Component {
         <div className={classes.colors}>
           {colorBoxes}
           <div className={classes.goBack}>
-            <Link to={`/palette/${paletteId}`}>GO BACK</Link>
+            <Link to={this.goBackUrl} transition="glide-right">
+              GO BACK
+            </Link>
           </div>
         </div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
@@ -58,4 +66,4 @@ class SingleColorPalette extends Component {
   }
 }
 
-export default withStyles(styles)(SingleColorPalette);
+export default withRouter(withStyles(styles)(SingleColorPalette));

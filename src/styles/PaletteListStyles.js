@@ -13,6 +13,7 @@ export default {
   root: {
     /* background by SVGBackgrounds.com*/
     backgroundColor: "#ffc6d7",
+    width: "100%",
     backgroundImage: `url(${background})`,
     backgroundAttachment: "fixed",
     backgroundSize: "cover",

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Link } from "react-router-dom";
+import { Link } from "react-tiger-transition";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles/ColorBoxStyles";
 
@@ -9,8 +9,10 @@ class ColorBox extends Component {
     super(props);
     this.state = {
       copied: false,
+      moreBtn: false,
     };
     this.changeCopyState = this.changeCopyState.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   changeCopyState() {
     this.setState({ copied: true });
@@ -18,10 +20,17 @@ class ColorBox extends Component {
       this.setState({ copied: false });
     }, 1500);
   }
+  handleClick() {
+    this.setState({ moreBtn: true });
+    // the code works without this settimeout
+    setTimeout(() => {
+      this.setState({ moreBtn: false });
+    }, 1000);
+  }
   render() {
     const { name, background, moreUrl, showingFullPalette, classes } =
       this.props;
-    const { copied } = this.state;
+    const { copied, moreBtn } = this.state;
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
         <div className={classes.colorBox} style={{ background }}>
@@ -30,7 +39,7 @@ class ColorBox extends Component {
           <div
             style={{ background }}
             className={`${classes.copyOverlay} ${
-              copied && classes.showOverlay
+              copied && !moreBtn && classes.showOverlay
             }`}
           />
           <div
@@ -46,7 +55,11 @@ class ColorBox extends Component {
             <button className={classes.copyButton}>Copy</button>
           </div>
           {showingFullPalette && (
-            <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
+            <Link
+              to={moreUrl}
+              transition="glide-left"
+              onClick={this.handleClick}
+            >
               <span className={classes.seeMore}>MORE</span>
             </Link>
           )}

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles/PaletteListStyles";
@@ -15,6 +14,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { blue, red } from "@material-ui/core/colors";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
+import { Link } from "react-tiger-transition";
+import { withRouter } from "react-router";
 
 class PaletteList extends Component {
   constructor(props) {
@@ -35,9 +36,9 @@ class PaletteList extends Component {
   closeDialog() {
     this.setState({ openDeleteDialog: false, deletingId: "" });
   }
-  goToPalette(id) {
-    this.props.history.push(`/palette/${id}`);
-  }
+  // goToPalette(id) {
+  //   this.props.history.push(`/palette/${id}`);
+  // }
   handleDelete() {
     this.props.deletePalette(this.state.deletingId);
     this.closeDialog();
@@ -50,7 +51,9 @@ class PaletteList extends Component {
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1 className={classes.heading}>React colors</h1>
-            <Link to="/palette/new">Create Palette</Link>
+            <Link to="/createNew" transition="glide-left">
+              Create Palette
+            </Link>
           </nav>
 
           <TransitionGroup className={classes.palettes}>
@@ -58,7 +61,7 @@ class PaletteList extends Component {
               <CSSTransition key={palette.id} classNames="fade" timeout={500}>
                 <MiniPalette
                   {...palette}
-                  handleClick={() => this.goToPalette(palette.id)}
+                  // handleClick={() => this.goToPalette(palette.id)}
                   openDialog={this.openDialog}
                   key={palette.id}
                   id={palette.id}
@@ -101,4 +104,4 @@ class PaletteList extends Component {
   }
 }
 
-export default withStyles(styles)(PaletteList);
+export default withRouter(withStyles(styles)(PaletteList));

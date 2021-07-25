@@ -40,6 +40,7 @@ class PaletteMetaForm extends Component {
       paletteName: this.state.newPaletteName,
       emoji: emojiObj.native,
     });
+    this.setState({ stage: "" });
   }
   render() {
     const { stage } = this.state;

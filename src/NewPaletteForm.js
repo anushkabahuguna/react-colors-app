@@ -12,6 +12,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import DraggableColorList from "./DraggableColorList";
 import arrayMove from "array-move";
 import styles from "./styles/NewPaletteFormStyles";
+import { withRouter } from "react-router";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -141,6 +142,9 @@ class NewPaletteForm extends Component {
           <DraggableColorList
             axis="xy"
             colors={colors}
+            //drag will only be counted if we move more than 20 pixels hence delete icon will work
+            /// and won't be considered as a drag
+            distance={20}
             removeColor={this.removeColor}
             onSortEnd={this.onSortEnd}
           />
@@ -150,4 +154,6 @@ class NewPaletteForm extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(NewPaletteForm);
+export default withRouter(
+  withStyles(styles, { withTheme: true })(NewPaletteForm)
+);

@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import PaletteMetaForm from "./PaletteMetaForm";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import styles from "./styles/PaletteFormNavStyles";
+import { Link } from "react-tiger-transition";
 
 class PaletteFormNav extends Component {
   constructor(props) {
@@ -35,7 +34,6 @@ class PaletteFormNav extends Component {
       this.props;
     return (
       <div className={classes.root}>
-        <CssBaseline />
         <AppBar
           position="fixed"
           color="default"
@@ -59,7 +57,7 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <Link to="/">
+            <Link to="/" transition="glide-right">
               <Button
                 variant="contained"
                 color="secondary"

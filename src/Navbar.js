@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // utilities
 import { withStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
 //components
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,6 +12,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import "rc-slider/assets/index.css";
 // import after rc-slider
 import styles from "./styles/NavbarStyles";
+import { Link } from "react-tiger-transition";
 
 class Navbar extends Component {
   constructor(props) {
@@ -38,7 +38,9 @@ class Navbar extends Component {
     return (
       <nav className={classes.navbar}>
         <div className={classes.logo}>
-          <Link to="/">react color picker</Link>
+          <Link to="/" transition="glide-right">
+            react color picker
+          </Link>
         </div>
 
         {showingAllColors && (

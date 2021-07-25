@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-tiger-transition";
+import { withStyles } from "@material-ui/core/styles";
+import { withRouter } from "react-router";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
-import { Navigation, Route, Screen, Link, glide } from "react-tiger-transition";
-import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles/PaletteStyles";
-import { withRouter } from "react-router";
 
 class SingleColorPalette extends Component {
   constructor(props) {
@@ -24,8 +24,8 @@ class SingleColorPalette extends Component {
     this.changeFormat = this.changeFormat.bind(this);
   }
   gatherShades(palette, id) {
-    //return all shades of given color
-    // we have the palette and we have the colorId as well
+    //return all shades of a given color
+    // we have the palette and the colorId as well
     let shades = [];
     let colors = palette.colors;
     for (let key in colors) {

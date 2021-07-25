@@ -1,6 +1,6 @@
 import sizes from "./sizes";
 
-export default {
+const styles = {
   navbar: {
     display: "flex",
     alignItems: "center",
@@ -43,7 +43,7 @@ export default {
         marginLeft: "-7px",
         marginTop: "-3px",
       },
-    [sizes.down("md")]: {
+    [sizes.down("sm")]: {
       width: "150px",
     },
   },
@@ -52,3 +52,5 @@ export default {
     marginRight: "1rem",
   },
 };
+
+export default styles;

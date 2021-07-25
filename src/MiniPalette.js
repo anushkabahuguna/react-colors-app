@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles/MiniPaletteStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { Button } from "@material-ui/core";
 import { Link } from "react-tiger-transition";
 
 class MiniPalette extends PureComponent {
@@ -32,11 +31,6 @@ class MiniPalette extends PureComponent {
             to={`/palette/${id}`}
             transition="glide-left"
           >
-            {/* <Link
-            variant="contained"
-            color="secondary"
-            className={classes.overlayBtn}
-          > */}
             OPEN
           </Link>
         </div>

@@ -1,6 +1,6 @@
 import sizes from "./sizes";
 
-export default {
+const styles = {
   "@global": {
     ".fade-exit": {
       opacity: 1,
@@ -63,3 +63,5 @@ export default {
     },
   },
 };
+
+export default styles;

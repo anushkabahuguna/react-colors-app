@@ -132,7 +132,6 @@ class NewPaletteForm extends Component {
             />
           </div>
         </Drawer>
-        {/* main contains the content */}
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,
@@ -143,7 +142,7 @@ class NewPaletteForm extends Component {
             axis="xy"
             colors={colors}
             //drag will only be counted if we move more than 20 pixels hence delete icon will work
-            /// and won't be considered as a drag
+            // and won't be considered as a drag
             distance={20}
             removeColor={this.removeColor}
             onSortEnd={this.onSortEnd}

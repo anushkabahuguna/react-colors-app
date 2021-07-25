@@ -65,7 +65,7 @@ function getRange(hexColor) {
   const end = "#fff";
   return [chroma(hexColor).darken(1.4).hex(), hexColor, end];
 }
-// color.darken(1.4) - color -- white
+// color.darken(1.4) -- color -- white
 function generateScale(hexColor, numberOfColors) {
   return chroma.scale(getRange(hexColor)).mode("lab").colors(numberOfColors);
 }

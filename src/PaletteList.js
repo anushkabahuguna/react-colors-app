@@ -1,22 +1,23 @@
 import React, { Component } from "react";
-import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/core/styles";
-import styles from "./styles/PaletteListStyles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { blue, red } from "@material-ui/core/colors";
+import { Link } from "react-tiger-transition";
+import { withRouter } from "react-router";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "emoji-mart/css/emoji-mart.css";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import { blue, red } from "@material-ui/core/colors";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
-import { Link } from "react-tiger-transition";
-import { withRouter } from "react-router";
 
+import MiniPalette from "./MiniPalette";
+import styles from "./styles/PaletteListStyles";
+
+import "emoji-mart/css/emoji-mart.css";
 class PaletteList extends Component {
   constructor(props) {
     super(props);
@@ -29,8 +30,8 @@ class PaletteList extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
   openDialog(id) {
-    // we have to stop event propagation but that is in another component so here we store the id
-    // which we potentially delete and if we delete then this palette gets deleted
+    // we have to stop event propagation but that is in another component so  we store the id here
+    // which we potentially use to delete the palette
     this.setState({ openDeleteDialog: true, deletingId: id });
   }
   closeDialog() {

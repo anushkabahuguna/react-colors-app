@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import { Switch } from "react-router-dom";
+import { Navigation, Route, glide } from "react-tiger-transition";
 import Palette from "./Palette";
 import SingleColorPalette from "./SingleColorPalette";
 import PaletteList from "./PaletteList";
 import NewPaletteForm from "./NewPaletteForm";
 import seedColors from "./seedColors";
-import { Navigation, Route, Screen, Link, glide } from "react-tiger-transition";
-import { Switch } from "react-router-dom";
-// WON'T USE 50 LEVEL AS ALL COLORS ARE WHITE THERE
+// WON'T USE 50th LEVEL AS ALL COLORS ARE WHITE THERE
 import { generatePalette } from "./colorHelpers";
 import "react-tiger-transition/styles/main.min.css";
 import "./App.css";
@@ -18,12 +18,6 @@ glide({
   name: "glide-right",
   direction: "right",
 });
-
-const screenStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
 
 document.getElementById("root").style.height = "100vh";
 
@@ -45,7 +39,7 @@ class App extends Component {
   deletePalette(id) {
     this.setState(
       (prevSt) => ({
-        palettes: prevSt.palettes.filter((palette) => palette.id != id),
+        palettes: prevSt.palettes.filter((palette) => palette.id !== id),
       }),
       this.syncLocalStorage
     );

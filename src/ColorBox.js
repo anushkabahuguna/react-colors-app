@@ -34,7 +34,7 @@ class ColorBox extends Component {
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
         <div className={classes.colorBox} style={{ background }}>
-          {/* here we are taking separate div because if we incrrease size of colorbox then
+          {/* here we are taking separate div because if we increase size of colorbox then
             size of buttons and texts on it will also increase */}
           <div
             style={{ background }}
@@ -46,7 +46,7 @@ class ColorBox extends Component {
             className={`${classes.copyMsg} ${copied && classes.showMessage}`}
           >
             <h1>copied!</h1>
-            <p className={classes.copyText}>{this.props.background}</p>
+            <p className={classes.copyText}>{background}</p>
           </div>
           <div>
             <div className={classes.boxContent}>

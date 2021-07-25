@@ -43,7 +43,7 @@ class PaletteMetaForm extends Component {
     this.setState({ stage: "" });
   }
   render() {
-    const { stage } = this.state;
+    const { stage, newPaletteName } = this.state;
 
     return (
       <div>
@@ -69,7 +69,7 @@ class PaletteMetaForm extends Component {
               </DialogContentText>
               <TextValidator
                 label="Palette Name"
-                value={this.state.newPaletteName}
+                value={newPaletteName}
                 onChange={this.handleChange}
                 fullWidth
                 margin="normal"

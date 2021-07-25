@@ -1,5 +1,5 @@
 import sizes from "./sizes";
-export default {
+const styles = {
   root: {
     backgroundColor: "white",
     borderRadius: "5px",
@@ -89,3 +89,5 @@ export default {
     },
   },
 };
+
+export default styles;

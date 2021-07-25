@@ -17,7 +17,6 @@ class ColorPickerForm extends Component {
     this.handleSumbit = this.handleSumbit.bind(this);
   }
   componentDidMount() {
-    //custom rules for validation
     ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
       this.props.colors.every(
         ({ name }) => name.toLowerCase() !== value.toLowerCase()
@@ -79,7 +78,6 @@ class ColorPickerForm extends Component {
             variant="contained"
             type="submit"
             color="primary"
-            style={{ backgroundColor: currentColor }}
             disabled={isPaletteFull}
             style={{
               backgroundColor: isPaletteFull ? "grey" : this.state.currentColor,
